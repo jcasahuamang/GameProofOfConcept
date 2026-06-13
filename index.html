@@ -9,101 +9,74 @@
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --sky:#3fc8ef; --sky-d:#1aa9d6;
-    --grape:#9b6cf2; --grape-d:#7a47e0;
-    --pink:#ff5cb0; --pink-d:#ff2e96;
-    --coral:#ff8a4c; --coral-d:#ff6a1f;
-    --sunny:#ffd23f; --sunny-d:#ffb800;
-    --lime:#8ee04a; --lime-d:#5fb71f;
-    --cream:#fff7ea; --cream-2:#ffe9c4;
-    --ink:#5a3570;        /* texto sobre claro */
-    --ink-soft:#9a7aa8;
-    --line-faint: rgba(120,70,40,.22);
+    --sky:#3fc8ef;--sky-d:#1aa9d6;--grape:#9b6cf2;--grape-d:#7a47e0;
+    --pink:#ff5cb0;--pink-d:#ff2e96;--coral:#ff8a4c;--coral-d:#ff6a1f;
+    --sunny:#ffd23f;--sunny-d:#ffb800;--lime:#8ee04a;--lime-d:#5fb71f;
+    --teal:#2f8d86;--cream:#fff7ea;--cream-2:#ffe9c4;
+    --ink:#5a3570;--ink-soft:#9a7aa8;--line-faint:rgba(120,70,40,.22);
   }
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
   html,body{min-height:100%;}
-  body{
-    font-family:'Nunito',system-ui,sans-serif;color:#fff;
-    min-height:100vh;padding:46px 20px 80px;overflow-x:hidden;
+  body{font-family:'Nunito',system-ui,sans-serif;color:#fff;min-height:100vh;padding:46px 20px 80px;overflow-x:hidden;
     background:
       radial-gradient(60% 50% at 15% 10%, rgba(255,255,255,.35), transparent 60%),
       radial-gradient(50% 40% at 90% 20%, rgba(255,210,63,.5), transparent 60%),
-      linear-gradient(155deg, var(--sky) 0%, var(--grape) 52%, var(--pink) 100%);
-  }
-  /* floating candy bokeh */
+      linear-gradient(155deg, var(--sky) 0%, var(--grape) 52%, var(--pink) 100%);}
   body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
     background:
       radial-gradient(circle at 12% 78%, rgba(255,255,255,.25) 0 8px, transparent 9px),
       radial-gradient(circle at 82% 70%, rgba(255,255,255,.18) 0 14px, transparent 15px),
       radial-gradient(circle at 68% 12%, rgba(255,255,255,.2) 0 6px, transparent 7px),
       radial-gradient(circle at 30% 30%, rgba(255,255,255,.14) 0 11px, transparent 12px);}
-  .page-head,.hint-trace,.stage,.gallery{position:relative;z-index:1;}
-
+  .page-head,.hint-wrap,.stage,.gallery{position:relative;z-index:1;}
   .page-head{max-width:860px;margin:0 auto 12px;text-align:center;}
-  .eyebrow{font-size:12px;letter-spacing:.34em;text-transform:uppercase;font-weight:800;
-    color:#fff;text-shadow:0 2px 6px rgba(120,40,120,.4);}
-  h1.wordmark{
-    font-family:'Baloo 2',cursive;font-weight:800;font-size:clamp(54px,10vw,96px);
-    letter-spacing:.06em;line-height:1;margin:.06em 0 .12em;
-    color:var(--sunny);
-    -webkit-text-stroke:5px #fff;paint-order:stroke fill;
-    text-shadow:0 8px 0 rgba(125,40,140,.35), 0 14px 26px rgba(80,20,90,.35);
-  }
-  .page-head .sub{color:#fff;font-size:15px;font-weight:700;max-width:520px;margin:0 auto;
-    text-shadow:0 2px 8px rgba(110,30,110,.45);}
-  .hint-trace{margin:26px auto 16px;text-align:center;color:#fff;font-size:13px;font-weight:800;
-    letter-spacing:.06em;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.5);
-    padding:9px 18px;border-radius:999px;display:inline-block;box-shadow:0 6px 16px rgba(90,20,100,.25);}
+  .eyebrow{font-size:12px;letter-spacing:.34em;text-transform:uppercase;font-weight:800;color:#fff;text-shadow:0 2px 6px rgba(120,40,120,.4);}
+  h1.wordmark{font-family:'Baloo 2',cursive;font-weight:800;font-size:clamp(54px,10vw,96px);letter-spacing:.06em;line-height:1;margin:.06em 0 .12em;
+    color:var(--sunny);-webkit-text-stroke:5px #fff;paint-order:stroke fill;text-shadow:0 8px 0 rgba(125,40,140,.35),0 14px 26px rgba(80,20,90,.35);}
+  .page-head .sub{color:#fff;font-size:15px;font-weight:700;max-width:540px;margin:0 auto;text-shadow:0 2px 8px rgba(110,30,110,.45);}
   .hint-wrap{text-align:center;}
+  .hint-trace{margin:24px auto 14px;color:#fff;font-size:13px;font-weight:800;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.5);
+    padding:9px 18px;border-radius:999px;display:inline-block;box-shadow:0 6px 16px rgba(90,20,100,.25);}
 
-  /* ---- Phone frame ---- */
-  .stage{display:flex;justify-content:center;margin-bottom:50px;}
+  .stage{display:flex;justify-content:center;margin-bottom:18px;}
   .gallery{display:flex;flex-wrap:wrap;gap:36px 30px;justify-content:center;align-items:flex-start;max-width:1180px;margin:0 auto;}
-  .phone{position:relative;border-radius:44px;padding:11px;
-    background:linear-gradient(160deg,#ffffff,#ffe6f4);
-    box-shadow:0 26px 60px -18px rgba(60,10,80,.6), inset 0 0 0 2px rgba(255,255,255,.7), 0 0 0 3px rgba(255,92,176,.25);}
-  .phone.lg{width:332px;} .phone.sm{width:258px;}
+  .phone{position:relative;border-radius:44px;padding:11px;background:linear-gradient(160deg,#ffffff,#ffe6f4);
+    box-shadow:0 26px 60px -18px rgba(60,10,80,.6),inset 0 0 0 2px rgba(255,255,255,.7),0 0 0 3px rgba(255,92,176,.25);}
+  .phone.lg{width:332px;}.phone.sm{width:258px;}
   .phone .screen{position:relative;overflow:hidden;border-radius:34px;aspect-ratio:9/19.3;display:flex;flex-direction:column;
-    background:linear-gradient(180deg, var(--cream) 0%, var(--cream-2) 100%);}
+    background:linear-gradient(180deg,var(--cream) 0%,var(--cream-2) 100%);}
   .phone .screen.festive{background:radial-gradient(70% 50% at 50% 12%, #ffe06b, transparent 55%),linear-gradient(170deg,#46cdf2,#9b6cf2 60%,#ff5cb0);}
+  .phone .screen.mapbg{background:linear-gradient(180deg,#bfefff 0%,#e9f7ff 55%,#fff3da 100%);}
   .phone .notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:40%;height:18px;background:#fff;border-radius:0 0 14px 14px;z-index:30;opacity:.65;}
   .caption{margin-top:14px;text-align:center;}
   .caption .t{font-family:'Baloo 2';font-weight:700;font-size:16px;color:#fff;text-shadow:0 2px 6px rgba(110,30,110,.4);}
   .caption .d{font-size:12.5px;color:rgba(255,255,255,.92);font-weight:700;margin-top:1px;}
-  .badge{display:inline-block;margin-top:7px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:800;
-    color:#7a47e0;background:#fff;border-radius:999px;padding:4px 13px;box-shadow:0 4px 0 rgba(255,92,176,.4);}
+  .badge{display:inline-block;margin-top:7px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:#7a47e0;background:#fff;border-radius:999px;padding:4px 13px;box-shadow:0 4px 0 rgba(255,92,176,.4);}
+  .grain::after{content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:.05;background-image:radial-gradient(rgba(120,60,20,1) .5px,transparent .6px);background-size:3px 3px;}
 
-  .grain::after{content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:.05;
-    background-image:radial-gradient(rgba(120,60,20,1) .5px,transparent .6px);background-size:3px 3px;}
-
-  /* ---- in-screen ---- */
   .scr-pad{padding:44px 18px 20px;flex:1;display:flex;flex-direction:column;}
   .hud{display:flex;align-items:center;justify-content:space-between;gap:8px;}
-  .chip{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:800;color:var(--ink);
-    background:#fff;padding:7px 14px;border-radius:999px;box-shadow:0 4px 0 rgba(255,180,40,.5), 0 6px 12px rgba(120,60,20,.12);}
+  .chip{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:800;color:var(--ink);background:#fff;padding:7px 14px;border-radius:999px;box-shadow:0 4px 0 rgba(255,180,40,.5),0 6px 12px rgba(120,60,20,.12);}
   .chip .coin{color:var(--sunny-d);font-size:16px;}
   .lvl small{display:block;font-size:10px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;font-weight:800;}
   .lvl b{font-family:'Baloo 2';font-weight:700;font-size:17px;color:var(--ink);}
 
   svg.glyph{width:100%;display:block;overflow:visible;}
-  .glyph .edge{stroke:var(--line-faint);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;fill:none;
-    transition:stroke .15s,stroke-width .15s;stroke-dasharray:.1 5;}
+  .glyph .edge{stroke:var(--line-faint);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;fill:none;transition:stroke .15s,stroke-width .15s;stroke-dasharray:.1 5;}
   .glyph .edge.lit{stroke:url(#candy);stroke-width:5;filter:url(#glow);stroke-dasharray:none;}
   .glyph .node{fill:#fff;stroke:#c79a6a;stroke-width:.8;}
   .glyph .node.done{fill:url(#candy);stroke:#fff;stroke-width:1;filter:url(#glow);}
   .glyph.solved .edge{stroke:url(#candy);stroke-width:5.2;filter:url(#glow);stroke-dasharray:none;}
   .glyph.solved .node{fill:url(#candy);stroke:#fff;stroke-width:1;}
-  .festive .glyph .edge{stroke:rgba(255,255,255,.55);}
   .festive .glyph.solved .edge{stroke:#fff;filter:url(#glow);}
-
+  .festive .glyph.solved .node{fill:#fff;}
   .bg-glyph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:.7;}
   .bg-glyph svg{width:88%;}
 
   .play-area{flex:1;display:flex;align-items:center;justify-content:center;position:relative;touch-action:none;}
   .traceFoot{margin-top:auto;}
   .ctrls{display:flex;gap:9px;justify-content:center;margin-top:10px;}
-  .ctrl{flex:1;border:none;border-radius:18px;padding:11px 6px;font-family:'Nunito';font-weight:800;font-size:12px;color:#fff;
-    display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;transition:transform .07s;}
+  .ctrl{flex:1;border:none;border-radius:18px;padding:11px 6px;font-family:'Nunito';font-weight:800;font-size:12px;color:#fff;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;transition:transform .07s;}
   .ctrl .ic{font-size:17px;}
   .ctrl.pink{background:linear-gradient(180deg,#ff86c6,var(--pink));box-shadow:0 5px 0 var(--pink-d),0 9px 14px rgba(120,30,90,.25);}
   .ctrl.sky{background:linear-gradient(180deg,#74dcf6,var(--sky));box-shadow:0 5px 0 var(--sky-d),0 9px 14px rgba(20,90,120,.22);}
@@ -113,55 +86,44 @@
   .progress-line b{color:var(--pink-d);font-family:'Baloo 2';font-size:16px;}
 
   .win{position:absolute;inset:0;z-index:25;display:flex;flex-direction:column;justify-content:flex-end;
-    background:linear-gradient(180deg,rgba(255,247,234,0) 28%, rgba(255,233,200,.4) 52%, rgba(255,240,220,.96));
-    opacity:0;pointer-events:none;transition:opacity .45s;}
+    background:linear-gradient(180deg,rgba(255,247,234,0) 28%,rgba(255,233,200,.4) 52%,rgba(255,240,220,.96));opacity:0;pointer-events:none;transition:opacity .45s;}
   .win.show{opacity:1;pointer-events:auto;}
   .win-card{padding:16px 18px 20px;text-align:center;}
-  .win-card .quechua{font-family:'Baloo 2';font-weight:800;font-size:34px;color:var(--pink);
-    -webkit-text-stroke:4px #fff;paint-order:stroke fill;text-shadow:0 6px 0 rgba(255,150,40,.5);}
+  .win-card .quechua{font-family:'Baloo 2';font-weight:800;font-size:34px;color:var(--pink);-webkit-text-stroke:4px #fff;paint-order:stroke fill;text-shadow:0 6px 0 rgba(255,150,40,.5);}
   .win-card .es{color:var(--ink-soft);font-size:13px;font-weight:800;margin-top:1px;}
-  .culture{margin:13px 0;padding:12px 14px;border-radius:18px;text-align:left;background:#fff;
-    box-shadow:0 6px 0 rgba(63,200,239,.3), 0 8px 16px rgba(80,40,120,.1);}
+  .culture{margin:13px 0;padding:12px 14px;border-radius:18px;text-align:left;background:#fff;box-shadow:0 6px 0 rgba(63,200,239,.3),0 8px 16px rgba(80,40,120,.1);}
   .culture .lab{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--sky-d);font-weight:900;}
   .culture p{font-size:12.5px;line-height:1.5;color:var(--ink);font-weight:600;margin-top:4px;}
   .reward{display:flex;align-items:center;justify-content:center;gap:7px;color:var(--sunny-d);font-weight:900;font-size:16px;margin-bottom:13px;}
-  .btn-primary{width:100%;border:none;cursor:pointer;border-radius:22px;padding:15px;
-    font-family:'Baloo 2';font-weight:700;font-size:19px;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.16);
-    background:linear-gradient(180deg,#a6ef6e,var(--lime-d));
-    box-shadow:0 7px 0 #3f8a1c, 0 14px 22px -6px rgba(40,120,10,.45), inset 0 2px 0 rgba(255,255,255,.5);transition:transform .07s;}
-  .btn-primary:active{transform:translateY(4px);box-shadow:0 3px 0 #3f8a1c, inset 0 2px 0 rgba(255,255,255,.5);}
-  .btn-ghost{width:100%;margin-top:9px;border:none;background:#fff;color:var(--grape-d);
-    border-radius:18px;padding:11px;font-weight:800;font-size:13px;cursor:pointer;box-shadow:0 4px 0 rgba(155,108,242,.4);}
-
+  .btn-primary{width:100%;border:none;cursor:pointer;border-radius:22px;padding:15px;font-family:'Baloo 2';font-weight:700;font-size:19px;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.16);
+    background:linear-gradient(180deg,#a6ef6e,var(--lime-d));box-shadow:0 7px 0 #3f8a1c,0 14px 22px -6px rgba(40,120,10,.45),inset 0 2px 0 rgba(255,255,255,.5);transition:transform .07s;}
+  .btn-primary:active{transform:translateY(4px);box-shadow:0 3px 0 #3f8a1c,inset 0 2px 0 rgba(255,255,255,.5);}
+  .btn-ghost{width:100%;margin-top:9px;border:none;background:#fff;color:var(--grape-d);border-radius:18px;padding:11px;font-weight:800;font-size:13px;cursor:pointer;box-shadow:0 4px 0 rgba(155,108,242,.4);}
   .spark{position:absolute;width:9px;height:9px;border-radius:3px;pointer-events:none;opacity:0;}
+
+  /* thumbnails of the 4 example traces */
+  .thumbs{display:flex;gap:10px;justify-content:center;margin:6px auto 0;max-width:332px;}
+  .thumb{flex:1;cursor:pointer;background:rgba(255,255,255,.22);border:2px solid rgba(255,255,255,.45);border-radius:16px;padding:6px 4px 5px;text-align:center;transition:transform .1s;}
+  .thumb:hover{transform:translateY(-2px);}
+  .thumb.active{background:#fff;border-color:#fff;box-shadow:0 6px 0 rgba(255,92,176,.5);}
+  .thumb svg{width:100%;height:42px;}
+  .thumb .nm{font-size:10px;font-weight:800;color:#fff;margin-top:2px;}
+  .thumb.active .nm{color:var(--grape-d);}
 
   /* splash */
   .splash{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px 22px;position:relative;z-index:2;}
-  .splash .mark{font-family:'Baloo 2';font-weight:800;font-size:56px;letter-spacing:.05em;color:var(--sunny);
-    -webkit-text-stroke:5px #fff;paint-order:stroke fill;text-shadow:0 7px 0 rgba(125,40,140,.4),0 12px 20px rgba(60,10,70,.4);}
-  .splash .tag{margin-top:8px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:900;color:#fff;
-    background:rgba(255,255,255,.22);padding:5px 14px;border-radius:999px;}
-  .splash .tap{position:absolute;bottom:52px;font-family:'Baloo 2';font-weight:700;font-size:15px;color:#fff;
-    background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.6);padding:9px 22px;border-radius:999px;
-    animation:breathe 1.8s ease-in-out infinite;}
+  .splash .mark{font-family:'Baloo 2';font-weight:800;font-size:56px;letter-spacing:.05em;color:var(--sunny);-webkit-text-stroke:5px #fff;paint-order:stroke fill;text-shadow:0 7px 0 rgba(125,40,140,.4),0 12px 20px rgba(60,10,70,.4);}
+  .splash .tag{margin-top:8px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:900;color:#fff;background:rgba(255,255,255,.22);padding:5px 14px;border-radius:999px;}
+  .splash .tap{position:absolute;bottom:52px;font-family:'Baloo 2';font-weight:700;font-size:15px;color:#fff;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.6);padding:9px 22px;border-radius:999px;animation:breathe 1.8s ease-in-out infinite;}
   @keyframes breathe{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.06);opacity:1}}
 
-  /* worlds */
-  .worlds{padding:44px 16px 20px;flex:1;display:flex;flex-direction:column;}
-  .worlds h2{font-family:'Baloo 2';font-weight:800;font-size:23px;text-align:center;color:var(--grape-d);}
-  .worlds .wsub{text-align:center;font-size:11px;color:var(--ink-soft);font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;}
-  .wlist{position:relative;display:flex;flex-direction:column;gap:12px;}
-  .wcard{position:relative;display:flex;align-items:center;gap:12px;padding:12px;border-radius:20px;background:#fff;
-    box-shadow:0 6px 0 var(--cc,rgba(255,180,40,.45)), 0 8px 16px rgba(120,60,20,.12);}
-  .wcard .dot{width:40px;height:40px;border-radius:14px;flex:none;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;
-    background:linear-gradient(160deg,var(--c1),var(--c2));box-shadow:inset 0 2px 0 rgba(255,255,255,.5);}
-  .wcard .info{flex:1;min-width:0;}
-  .wcard .info .nm{font-family:'Baloo 2';font-weight:700;font-size:15px;color:var(--ink);}
-  .wcard .info .pr{font-size:11px;color:var(--ink-soft);font-weight:700;margin-top:1px;}
-  .wcard .bar{height:7px;border-radius:99px;background:#efe2cf;margin-top:6px;overflow:hidden;}
-  .wcard .bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--c1),var(--c2));}
-  .wcard.locked{opacity:.6;}
-  .wcard .lk{font-size:16px;}
+  /* WORLD MAP (Peru) */
+  .worlds{padding:42px 14px 16px;flex:1;display:flex;flex-direction:column;}
+  .worlds h2{font-family:'Baloo 2';font-weight:800;font-size:22px;text-align:center;color:var(--grape-d);}
+  .worlds .wsub{text-align:center;font-size:10.5px;color:var(--ink-soft);font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;}
+  .mapwrap{flex:1;position:relative;}
+  .perumap{width:100%;height:100%;display:block;}
+  .pinlabel{font-family:'Baloo 2';font-weight:700;}
 
   /* level select */
   .lvlsel{padding:44px 16px 18px;flex:1;display:flex;flex-direction:column;}
@@ -170,15 +132,13 @@
   .lvlsel .top h2{font-family:'Baloo 2';font-weight:800;font-size:18px;color:var(--ink);}
   .lvlsel .top small{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:800;}
   .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;}
-  .cell{aspect-ratio:1;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
-    background:#fff;font-family:'Baloo 2';font-weight:700;font-size:16px;color:var(--ink-soft);box-shadow:0 4px 0 rgba(200,160,90,.4);}
+  .cell{aspect-ratio:1;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:#fff;font-family:'Baloo 2';font-weight:700;font-size:16px;color:var(--ink-soft);box-shadow:0 4px 0 rgba(200,160,90,.4);}
   .cell.done{background:linear-gradient(180deg,#ffe06b,var(--sunny-d));color:#fff;box-shadow:0 4px 0 #d99500;text-shadow:0 1px 0 rgba(0,0,0,.12);}
   .cell.cur{background:linear-gradient(180deg,#ff86c6,var(--pink));color:#fff;box-shadow:0 4px 0 var(--pink-d);animation:bob 1.2s ease-in-out infinite;}
   @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
   .cell.locked{color:#c9b59a;box-shadow:0 4px 0 rgba(200,160,90,.25);}
   .cell .stars{font-size:8px;letter-spacing:1px;}
   .lvlsel .foot{margin-top:auto;text-align:center;font-size:11px;color:var(--ink-soft);font-weight:800;padding-top:12px;}
-
   @media(max-width:560px){.phone.lg,.phone.sm{width:300px;}}
 </style>
 </head>
@@ -187,25 +147,17 @@
   <div class="page-head">
     <div class="eyebrow">Maqueta visual · concepto one-line</div>
     <h1 class="wordmark">NAZCA</h1>
-    <p class="sub">Estilo dulce y vibrante, con los colores de los tejidos andinos. Cada nivel es un geoglifo que se traza de un solo trazo; la línea se enciende como una jalea de caramelo.</p>
+    <p class="sub">Estilo dulce y vibrante con colores de tejidos andinos. Abajo hay 4 geoglifos de ejemplo: tócalos y trázalos de un solo trazo.</p>
   </div>
 
-  <div class="hint-wrap"><div class="hint-trace">✦ Pruébalo — traza el colibrí con el dedo o el mouse ✦</div></div>
+  <div class="hint-wrap"><div class="hint-trace">✦ Traza con el dedo o el mouse · cambia de figura abajo ✦</div></div>
 
-  <!-- shared SVG defs (gradiente + glow) -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <defs>
-      <linearGradient id="candy" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#ff4fa3"/>
-        <stop offset=".5" stop-color="#ff8a3c"/>
-        <stop offset="1" stop-color="#ffd23f"/>
-      </linearGradient>
-      <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
-        <feGaussianBlur stdDeviation="1.6" result="b"/>
-        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-      </filter>
-    </defs>
-  </svg>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <linearGradient id="candy" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff4fa3"/><stop offset=".5" stop-color="#ff8a3c"/><stop offset="1" stop-color="#ffd23f"/></linearGradient>
+    <linearGradient id="land" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9be36a"/><stop offset="1" stop-color="#3aa58c"/></linearGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="ds" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="1.4" stdDeviation="1.2" flood-color="#1c5a4f" flood-opacity="0.4"/></filter>
+  </defs></svg>
 
   <!-- ============ INTERACTIVE GAMEPLAY ============ -->
   <div class="stage">
@@ -215,31 +167,25 @@
         <div class="screen grain">
           <div class="scr-pad">
             <div class="hud">
-              <div class="lvl"><small>Líneas de Nazca</small><b>7 · El Colibrí</b></div>
+              <div class="lvl"><small id="lvlWorld">Líneas de Nazca</small><b id="lvlName">1 · El Colibrí</b></div>
               <div class="chip"><span class="coin">◆</span> <span id="coins">240</span></div>
             </div>
             <div class="play-area">
-              <svg id="playGlyph" class="glyph" viewBox="0 0 100 100" aria-label="Geoglifo del colibrí">
-                <g id="edgeLayer"></g>
-                <g id="nodeLayer"></g>
-                <circle id="head" r="2.8" fill="#fff" filter="url(#glow)" style="display:none"/>
-              </svg>
+              <svg id="playGlyph" class="glyph" viewBox="0 0 100 100" aria-label="Geoglifo"><g id="edgeLayer"></g><g id="nodeLayer"></g>
+                <circle id="head" r="2.8" fill="#fff" filter="url(#glow)" style="display:none"/></svg>
               <div class="win" id="winOverlay">
                 <div class="win-card">
                   <div class="quechua">¡Sumaq!</div>
                   <div class="es">Trazo perfecto</div>
-                  <div class="culture">
-                    <div class="lab">Atlas · Geoglifo</div>
-                    <p>El colibrí de Nazca mide unos 93 m. Para los pueblos de la costa simbolizaba la fertilidad y el agua que bajaba del altiplano.</p>
-                  </div>
+                  <div class="culture"><div class="lab">Atlas · Geoglifo</div><p id="cultureText"></p></div>
                   <div class="reward"><span>◆</span> +30 · racha de 4 días 🔥</div>
                   <button class="btn-primary" id="nextBtn">Siguiente trazo</button>
-                  <button class="btn-ghost">Compartir mi colibrí ✦</button>
+                  <button class="btn-ghost">Compartir mi figura ✦</button>
                 </div>
               </div>
             </div>
             <div class="traceFoot">
-              <div class="progress-line"><b id="prog">0</b> / 12 trazos encendidos</div>
+              <div class="progress-line"><b id="prog">0</b> / <span id="progTotal">12</span> trazos encendidos</div>
               <div class="ctrls">
                 <button class="ctrl pink" id="hintBtn"><span class="ic">✦</span>Pista</button>
                 <button class="ctrl sky" id="undoBtn"><span class="ic">↩</span>Deshacer</button>
@@ -249,7 +195,8 @@
           </div>
         </div>
       </div>
-      <div class="caption"><div class="t">Pantalla de juego</div><div class="d">Un dedo, sin tiempo, sin perder.</div><span class="badge">Interactiva</span></div>
+      <div class="thumbs" id="thumbs"></div>
+      <div class="caption"><div class="t">Pantalla de juego — 4 ejemplos</div><div class="d">Toca una figura abajo para cambiar.</div><span class="badge">Interactiva</span></div>
     </div>
   </div>
 
@@ -257,139 +204,173 @@
   <div class="gallery">
 
     <div>
-      <div class="phone sm">
-        <div class="notch"></div>
+      <div class="phone sm"><div class="notch"></div>
         <div class="screen festive grain">
-          <div class="bg-glyph"><svg class="glyph solved" viewBox="0 0 100 100" data-faint="1"></svg></div>
-          <div class="splash">
-            <div class="mark">NAZCA</div>
-            <div class="tag">Trazos del Perú</div>
-            <div class="tap">¡Jugar!</div>
-          </div>
-        </div>
-      </div>
+          <div class="bg-glyph"><svg class="glyph solved" viewBox="0 0 100 100" data-fig="0"></svg></div>
+          <div class="splash"><div class="mark">NAZCA</div><div class="tag">Trazos del Perú</div><div class="tap">¡Jugar!</div></div>
+        </div></div>
       <div class="caption"><div class="t">Inicio</div><div class="d">Colorido y festivo.</div></div>
     </div>
 
     <div>
-      <div class="phone sm">
-        <div class="notch"></div>
-        <div class="screen grain">
+      <div class="phone sm"><div class="notch"></div>
+        <div class="screen mapbg grain">
           <div class="worlds">
             <h2>Viaje por el Perú</h2>
-            <div class="wsub">Elige tu sendero</div>
-            <div class="wlist">
-              <div class="wcard" style="--cc:rgba(255,180,40,.5)">
-                <div class="dot" style="--c1:#ffd23f;--c2:#ff8a3c">🐦</div>
-                <div class="info"><div class="nm">Líneas de Nazca</div><div class="pr">Desierto · 7 / 40</div>
-                  <div class="bar"><i style="width:18%;--c1:#ffd23f;--c2:#ff8a3c"></i></div></div>
-              </div>
-              <div class="wcard" style="--cc:rgba(63,200,239,.5)">
-                <div class="dot" style="--c1:#74dcf6;--c2:#2f8d86">◆</div>
-                <div class="info"><div class="nm">Kené Amazónico</div><div class="pr">Shipibo · 0 / 45</div>
-                  <div class="bar"><i style="width:0%;--c1:#74dcf6;--c2:#2f8d86"></i></div></div>
-              </div>
-              <div class="wcard locked" style="--cc:rgba(255,92,176,.4)">
-                <div class="dot" style="--c1:#ff86c6;--c2:#ff2e96">▦</div>
-                <div class="info"><div class="nm">Tejidos Wari</div><div class="pr">Se abre al terminar Nazca</div></div>
-                <div class="lk">🔒</div>
-              </div>
-              <div class="wcard locked" style="--cc:rgba(155,108,242,.4)">
-                <div class="dot" style="--c1:#b58cff;--c2:#7a47e0">☉</div>
-                <div class="info"><div class="nm">Imperio del Sol</div><div class="pr">Inca · bloqueado</div></div>
-                <div class="lk">🔒</div>
-              </div>
+            <div class="wsub">Toca un mundo para empezar</div>
+            <div class="mapwrap">
+              <svg class="perumap" viewBox="0 0 100 132" aria-label="Mapa del Perú">
+                <!-- decor sky -->
+                <text x="89" y="16" font-size="13" text-anchor="middle">☀️</text>
+                <text x="16" y="24" font-size="9" text-anchor="middle" opacity="0.9">☁️</text>
+                <text x="72" y="118" font-size="9" text-anchor="middle">🌊</text>
+                <!-- Peru silhouette -->
+                <path d="M28,22 L42,15 L56,17 Q72,15 82,28 L92,42 Q95,52 87,60 L84,76 L74,94 L64,110 L54,124 L47,117 L42,101 L33,83 L24,62 L17,40 Q19,28 28,22 Z"
+                      fill="url(#land)" stroke="#2c7d68" stroke-width="1.6" filter="url(#ds)"/>
+                <path d="M28,22 L42,15 L56,17 Q72,15 82,28 L92,42 Q95,52 87,60 L84,76 L74,94 L64,110 L54,124 L47,117 L42,101 L33,83 L24,62 L17,40 Q19,28 28,22 Z"
+                      fill="none" stroke="rgba(255,255,255,.4)" stroke-width="0.8"/>
+                <!-- journey route -->
+                <path d="M40,102 C58,96 64,70 74,52 C70,66 58,70 50,76 C58,82 60,90 62,94"
+                      fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="0.5 5" opacity="0.95"/>
+                <!-- llama -->
+                <text x="26" y="118" font-size="10" text-anchor="middle">🦙</text>
+
+                <!-- PIN: Nazca (current) -->
+                <g>
+                  <circle cx="40" cy="102" r="9.5" fill="none" stroke="#ff2e96" stroke-width="1.4" opacity="0.6"><animate attributeName="r" values="8;12;8" dur="1.6s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.7;0;0.7" dur="1.6s" repeatCount="indefinite"/></circle>
+                  <circle cx="40" cy="102" r="8.5" fill="#ffce3d" stroke="#fff" stroke-width="2" filter="url(#ds)"/>
+                  <text x="40" y="105.5" font-size="9" text-anchor="middle">🐦</text>
+                  <g transform="translate(40,116)"><rect x="-15" y="-6.5" width="30" height="12" rx="6" fill="#fff"/><text class="pinlabel" x="0" y="2.2" font-size="6.4" text-anchor="middle" fill="#5a3570">Nazca 7/40</text></g>
+                </g>
+                <!-- PIN: Kené (jungle, next) -->
+                <g>
+                  <circle cx="74" cy="52" r="8.5" fill="#3fc8ef" stroke="#fff" stroke-width="2" filter="url(#ds)"/>
+                  <text x="74" y="55.5" font-size="9" text-anchor="middle">🌿</text>
+                  <g transform="translate(74,66)"><rect x="-13" y="-6.5" width="26" height="12" rx="6" fill="#fff"/><text class="pinlabel" x="0" y="2.2" font-size="6.4" text-anchor="middle" fill="#5a3570">Kené 0/45</text></g>
+                </g>
+                <!-- PIN: Wari (locked) -->
+                <g opacity="0.78">
+                  <circle cx="50" cy="76" r="8" fill="#caa9e8" stroke="#fff" stroke-width="2" filter="url(#ds)"/>
+                  <text x="50" y="79" font-size="8" text-anchor="middle">🔒</text>
+                  <g transform="translate(50,89)"><rect x="-12" y="-6.5" width="24" height="12" rx="6" fill="#fff"/><text class="pinlabel" x="0" y="2.2" font-size="6.4" text-anchor="middle" fill="#9a7aa8">Wari</text></g>
+                </g>
+                <!-- PIN: Inca (locked) -->
+                <g opacity="0.78">
+                  <circle cx="62" cy="94" r="8" fill="#caa9e8" stroke="#fff" stroke-width="2" filter="url(#ds)"/>
+                  <text x="62" y="97" font-size="8" text-anchor="middle">🔒</text>
+                  <g transform="translate(62,107)"><rect x="-12" y="-6.5" width="24" height="12" rx="6" fill="#fff"/><text class="pinlabel" x="0" y="2.2" font-size="6.4" text-anchor="middle" fill="#9a7aa8">Inca</text></g>
+                </g>
+              </svg>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="caption"><div class="t">Mapa de mundos</div><div class="d">Cada cultura, su color.</div></div>
+        </div></div>
+      <div class="caption"><div class="t">Mapa del Perú</div><div class="d">Un viaje por cada cultura.</div></div>
     </div>
 
     <div>
-      <div class="phone sm">
-        <div class="notch"></div>
+      <div class="phone sm"><div class="notch"></div>
         <div class="screen grain">
           <div class="lvlsel">
             <div class="top"><span class="back">‹</span><div><small>Mundo 1</small><h2>Líneas de Nazca</h2></div></div>
             <div class="grid" id="lvlgrid"></div>
             <div class="foot">240 niveles y subiendo · cada actualización trae más</div>
           </div>
-        </div>
-      </div>
+        </div></div>
       <div class="caption"><div class="t">Selección de niveles</div><div class="d">Cientos de trazos por coleccionar.</div></div>
     </div>
 
     <div>
-      <div class="phone sm">
-        <div class="notch"></div>
+      <div class="phone sm"><div class="notch"></div>
         <div class="screen grain">
           <div class="scr-pad">
-            <div class="hud">
-              <div class="lvl"><small>Líneas de Nazca</small><b>11 · La Araña</b></div>
-              <div class="chip"><span class="coin">◆</span> 310</div>
-            </div>
-            <div class="play-area"><svg class="glyph solved" viewBox="0 0 100 100" data-spider="1"></svg></div>
-            <div class="traceFoot">
-              <div class="win-card" style="padding:6px 0 0;">
-                <div class="quechua" style="font-size:26px;">¡Allin!</div>
-                <div class="es">Trazo perfecto</div>
-                <div class="reward" style="margin:10px 0;"><span>◆</span> +30</div>
-                <button class="btn-primary">Siguiente trazo</button>
-              </div>
-            </div>
+            <div class="hud"><div class="lvl"><small>Líneas de Nazca</small><b>9 · La Araña</b></div><div class="chip"><span class="coin">◆</span> 310</div></div>
+            <div class="play-area"><svg class="glyph solved" viewBox="0 0 100 100" data-fig="1"></svg></div>
+            <div class="traceFoot"><div class="win-card" style="padding:6px 0 0;">
+              <div class="quechua" style="font-size:26px;">¡Allin!</div><div class="es">Trazo perfecto</div>
+              <div class="reward" style="margin:10px 0;"><span>◆</span> +30</div><button class="btn-primary">Siguiente trazo</button>
+            </div></div>
           </div>
-        </div>
-      </div>
+        </div></div>
       <div class="caption"><div class="t">Nivel completado</div><div class="d">La figura brilla + confeti.</div></div>
     </div>
 
   </div>
 
 <script>
-const N={A:[10,55],B:[34,52],C:[30,70],D:[54,66],E:[78,74],F:[70,58],G:[90,50],H:[60,48],I:[44,30],J:[40,50],K:[30,38]};
-const SOL=['A','B','K','I','H','G','F','E','D','C','B','J','H'];
-const EDGES=[];for(let i=0;i<SOL.length-1;i++)EDGES.push([SOL[i],SOL[i+1]]);
-const key=(a,b)=>[a,b].sort().join('|');
-const edgeIndex={};EDGES.forEach((e,i)=>edgeIndex[key(e[0],e[1])]=i);
 const SVGNS='http://www.w3.org/2000/svg';
+const LEVELS=[
+ {name:'El Colibrí',world:'Líneas de Nazca',
+  nodes:{A:[10,55],B:[34,52],C:[30,70],D:[54,66],E:[78,74],F:[70,58],G:[90,50],H:[60,48],I:[44,30],J:[40,50],K:[30,38]},
+  sol:['A','B','K','I','H','G','F','E','D','C','B','J','H'],
+  culture:'El colibrí de Nazca mide unos 93 m. Para los pueblos de la costa simbolizaba la fertilidad y el agua que bajaba del altiplano.'},
+ {name:'La Araña',world:'Líneas de Nazca',
+  nodes:{b0:[64,52],b1:[59.9,61.9],b2:[50,66],b3:[40.1,61.9],b4:[36,52],b5:[40.1,42.1],b6:[50,38],b7:[59.9,42.1],
+         t0:[77.7,63.5],t1:[61.5,79.7],t2:[38.5,79.7],t3:[22.3,63.5],t4:[22.3,40.5],t5:[38.5,24.3],t6:[61.5,24.3],t7:[77.7,40.5]},
+  sol:['b0','t0','b1','t1','b2','t2','b3','t3','b4','t4','b5','t5','b6','t6','b7','t7','b0'],
+  culture:'La araña de Nazca (~46 m) se vincula con la lluvia y la fertilidad; su trazo recuerda a constelaciones del cielo andino.'},
+ {name:'La Garza',world:'Líneas de Nazca',
+  nodes:{g0:[8,28],g1:[18,24],g2:[13,36],g3:[23,40],g4:[19,52],g5:[30,55],g6:[44,50],g7:[60,52],g8:[50,62],g9:[58,66],g10:[46,70],g11:[44,84],g12:[40,68],g13:[34,84],g14:[32,62],g15:[38,54]},
+  sol:['g0','g1','g2','g3','g4','g5','g6','g7','g8','g9','g10','g11','g12','g13','g14','g15'],
+  culture:'Las aves de cuello largo, como la garza, pudieron marcar la llegada de las aguas y el cambio de estación en la costa.'},
+ {name:'La Chakana',world:'Imperio del Sol',
+  nodes:{c0:[38,20],c1:[62,20],c2:[62,38],c3:[80,38],c4:[80,62],c5:[62,62],c6:[62,80],c7:[38,80],c8:[38,62],c9:[20,62],c10:[20,38],c11:[38,38]},
+  sol:['c0','c1','c2','c3','c4','c5','c6','c7','c8','c9','c10','c11','c0'],
+  culture:'La chakana o cruz andina representa los tres mundos del pensamiento inca y los cuatro puntos cardinales del Tahuantinsuyo.'}
+];
+const key=(a,b)=>[a,b].sort().join('|');
+function edgesFromSol(sol){const e=[];for(let i=0;i<sol.length-1;i++)e.push([sol[i],sol[i+1]]);return e;}
 
-function paintInto(svg){
-  const ge=document.createElementNS(SVGNS,'g');
-  EDGES.forEach(e=>{const l=document.createElementNS(SVGNS,'line');
-    l.setAttribute('x1',N[e[0]][0]);l.setAttribute('y1',N[e[0]][1]);l.setAttribute('x2',N[e[1]][0]);l.setAttribute('y2',N[e[1]][1]);
-    l.setAttribute('class','edge');ge.appendChild(l);});
-  svg.appendChild(ge);
-  const gn=document.createElementNS(SVGNS,'g');
+/* ---- static figures (splash & complete) ---- */
+function drawStatic(svg,lv){const e=edgesFromSol(lv.sol),N=lv.nodes;
+  e.forEach(p=>{const l=document.createElementNS(SVGNS,'line');
+    l.setAttribute('x1',N[p[0]][0]);l.setAttribute('y1',N[p[0]][1]);l.setAttribute('x2',N[p[1]][0]);l.setAttribute('y2',N[p[1]][1]);
+    l.setAttribute('class','edge');svg.appendChild(l);});
   Object.keys(N).forEach(k=>{const c=document.createElementNS(SVGNS,'circle');
-    c.setAttribute('cx',N[k][0]);c.setAttribute('cy',N[k][1]);c.setAttribute('r',2);c.setAttribute('class','node');gn.appendChild(c);});
-  svg.appendChild(gn);
-}
-document.querySelectorAll('[data-faint],[data-spider]').forEach(paintInto);
+    c.setAttribute('cx',N[k][0]);c.setAttribute('cy',N[k][1]);c.setAttribute('r',2);c.setAttribute('class','node');svg.appendChild(c);});}
+document.querySelectorAll('[data-fig]').forEach(svg=>drawStatic(svg,LEVELS[+svg.dataset.fig]));
 
+/* ---- thumbnails ---- */
+const thumbs=document.getElementById('thumbs');
+LEVELS.forEach((lv,i)=>{const d=document.createElement('div');d.className='thumb'+(i===0?' active':'');
+  const svg=document.createElementNS(SVGNS,'svg');svg.setAttribute('viewBox','0 0 100 100');svg.setAttribute('class','glyph solved');
+  drawStatic(svg,lv);d.appendChild(svg);
+  const nm=document.createElement('div');nm.className='nm';nm.textContent=lv.name.replace('El ','').replace('La ','');d.appendChild(nm);
+  d.onclick=()=>loadLevel(i);thumbs.appendChild(d);});
+
+/* ---- level select grid ---- */
 const grid=document.getElementById('lvlgrid');
-const states=['done','done','done','done','done','done','done','cur','lock','lock','lock','lock'];
+const states=['done','done','done','done','done','done','done','done','cur','lock','lock','lock'];
 for(let i=0;i<12;i++){const c=document.createElement('div');const s=states[i];
   c.className='cell'+(s==='done'?' done':'')+(s==='cur'?' cur':'')+(s==='lock'?' locked':'');
-  if(s==='lock')c.innerHTML='🔒';
-  else c.innerHTML='<span>'+(i+1)+'</span>'+(s==='done'?'<span class="stars">★★★</span>':'<span class="stars">▶</span>');
+  c.innerHTML=s==='lock'?'🔒':('<span>'+(i+1)+'</span>'+(s==='done'?'<span class="stars">★★★</span>':'<span class="stars">▶</span>'));
   grid.appendChild(c);}
 
-const svg=document.getElementById('playGlyph');
-const edgeLayer=document.getElementById('edgeLayer'),nodeLayer=document.getElementById('nodeLayer'),headDot=document.getElementById('head');
-const edgeEls=[],nodeEls={};
-EDGES.forEach(e=>{const l=document.createElementNS(SVGNS,'line');
-  l.setAttribute('x1',N[e[0]][0]);l.setAttribute('y1',N[e[0]][1]);l.setAttribute('x2',N[e[1]][0]);l.setAttribute('y2',N[e[1]][1]);
-  l.setAttribute('class','edge');edgeLayer.appendChild(l);edgeEls.push(l);});
-Object.keys(N).forEach(k=>{const c=document.createElementNS(SVGNS,'circle');
-  c.setAttribute('cx',N[k][0]);c.setAttribute('cy',N[k][1]);c.setAttribute('r',2.4);c.setAttribute('class','node');nodeLayer.appendChild(c);nodeEls[k]=c;});
-const ring=document.createElementNS(SVGNS,'circle');
-ring.setAttribute('cx',N.A[0]);ring.setAttribute('cy',N.A[1]);ring.setAttribute('r',4.2);
-ring.setAttribute('fill','none');ring.setAttribute('stroke','#ff2e96');ring.setAttribute('stroke-width','1.2');
-nodeLayer.appendChild(ring);ring.style.transformOrigin=N.A[0]+'px '+N.A[1]+'px';
-if(ring.animate)ring.animate([{opacity:.3,transform:'scale(.85)'},{opacity:1,transform:'scale(1.3)'},{opacity:.3,transform:'scale(.85)'}],{duration:1500,iterations:Infinity});
+/* ---- interactive engine ---- */
+const svg=document.getElementById('playGlyph'),edgeLayer=document.getElementById('edgeLayer'),nodeLayer=document.getElementById('nodeLayer'),headDot=document.getElementById('head');
+const winOverlay=document.getElementById('winOverlay');
+let LV,N,EDGES,edgeIndex,edgeEls,nodeEls,ring,path,used,current,active,curIdx=0;
 
-let path=[],used=new Set(),current=null,active=false;
+function loadLevel(idx){
+  curIdx=idx;LV=LEVELS[idx];N=LV.nodes;EDGES=edgesFromSol(LV.sol);
+  edgeIndex={};EDGES.forEach((e,i)=>edgeIndex[key(e[0],e[1])]=i);
+  edgeLayer.innerHTML='';nodeLayer.innerHTML='';edgeEls=[];nodeEls={};
+  EDGES.forEach(e=>{const l=document.createElementNS(SVGNS,'line');
+    l.setAttribute('x1',N[e[0]][0]);l.setAttribute('y1',N[e[0]][1]);l.setAttribute('x2',N[e[1]][0]);l.setAttribute('y2',N[e[1]][1]);
+    l.setAttribute('class','edge');edgeLayer.appendChild(l);edgeEls.push(l);});
+  Object.keys(N).forEach(k=>{const c=document.createElementNS(SVGNS,'circle');
+    c.setAttribute('cx',N[k][0]);c.setAttribute('cy',N[k][1]);c.setAttribute('r',2.4);c.setAttribute('class','node');nodeLayer.appendChild(c);nodeEls[k]=c;});
+  const st=LV.sol[0];
+  ring=document.createElementNS(SVGNS,'circle');ring.setAttribute('cx',N[st][0]);ring.setAttribute('cy',N[st][1]);ring.setAttribute('r',4.2);
+  ring.setAttribute('fill','none');ring.setAttribute('stroke','#ff2e96');ring.setAttribute('stroke-width','1.2');nodeLayer.appendChild(ring);
+  ring.style.transformOrigin=N[st][0]+'px '+N[st][1]+'px';
+  if(ring.animate)ring.animate([{opacity:.3,transform:'scale(.85)'},{opacity:1,transform:'scale(1.3)'},{opacity:.3,transform:'scale(.85)'}],{duration:1500,iterations:Infinity});
+  path=[];used=new Set();current=null;active=false;svg.classList.remove('solved');winOverlay.classList.remove('show');
+  document.getElementById('lvlName').textContent=(idx+1)+' · '+LV.name;
+  document.getElementById('lvlWorld').textContent=LV.world;
+  document.getElementById('progTotal').textContent=EDGES.length;
+  [...thumbs.children].forEach((t,i)=>t.classList.toggle('active',i===idx));
+  render();
+}
 const toSvg=evt=>{const p=svg.createSVGPoint();p.x=evt.clientX;p.y=evt.clientY;return p.matrixTransform(svg.getScreenCTM().inverse());};
 function nearest(p,r){let best=null,bd=r*r;for(const k in N){const dx=N[k][0]-p.x,dy=N[k][1]-p.y,d=dx*dx+dy*dy;if(d<bd){bd=d;best=k;}}return best;}
 function render(){
@@ -407,25 +388,22 @@ svg.addEventListener('pointermove',e=>{if(!active||!current)return;const n=neare
   if(n&&n!==current){const i=edgeIndex[key(current,n)];if(i!==undefined&&!used.has(i))commit(n);}});
 svg.addEventListener('pointerup',()=>active=false);svg.addEventListener('pointercancel',()=>active=false);
 
-document.getElementById('undoBtn').onclick=()=>{if(path.length<=1){resetTrace();return;}
+document.getElementById('undoBtn').onclick=()=>{if(path.length<=1){loadLevel(curIdx);return;}
   const last=path.pop();used.delete(edgeIndex[key(path[path.length-1],last)]);current=path[path.length-1];render();};
-document.getElementById('resetBtn').onclick=resetTrace;
-function resetTrace(){path=[];used=new Set();current=null;active=false;ring.style.display='block';render();}
-document.getElementById('hintBtn').onclick=()=>{let t=-1;for(let i=0;i<SOL.length-1;i++){const idx=edgeIndex[key(SOL[i],SOL[i+1])];if(!used.has(idx)){t=idx;break;}}
+document.getElementById('resetBtn').onclick=()=>loadLevel(curIdx);
+document.getElementById('hintBtn').onclick=()=>{let t=-1;for(let i=0;i<LV.sol.length-1;i++){const idx=edgeIndex[key(LV.sol[i],LV.sol[i+1])];if(!used.has(idx)){t=idx;break;}}
   if(t>=0)edgeEls[t].animate([{stroke:'#ff2e96',strokeWidth:6},{stroke:'#ff2e96',strokeWidth:6},{stroke:'rgba(120,70,40,.22)',strokeWidth:2.4}],{duration:900});};
 
-const winOverlay=document.getElementById('winOverlay');
-function win(){svg.classList.add('solved');setTimeout(()=>{winOverlay.classList.add('show');confetti();},420);}
-document.getElementById('nextBtn').onclick=()=>{winOverlay.classList.remove('show');svg.classList.remove('solved');
-  const c=document.getElementById('coins');c.textContent=parseInt(c.textContent)+30;resetTrace();};
+function win(){svg.classList.add('solved');document.getElementById('cultureText').textContent=LV.culture;
+  setTimeout(()=>{winOverlay.classList.add('show');confetti();},420);}
+document.getElementById('nextBtn').onclick=()=>{const c=document.getElementById('coins');c.textContent=parseInt(c.textContent)+30;loadLevel((curIdx+1)%LEVELS.length);};
 function confetti(){const area=svg.parentElement;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   const cols=['#ff4fa3','#ff8a3c','#ffd23f','#3fc8ef','#8ee04a','#9b6cf2'];
-  for(let i=0;i<30;i++){const s=document.createElement('div');s.className='spark';
-    s.style.background=cols[i%cols.length];s.style.boxShadow='0 0 6px '+cols[i%cols.length];
+  for(let i=0;i<30;i++){const s=document.createElement('div');s.className='spark';s.style.background=cols[i%cols.length];s.style.boxShadow='0 0 6px '+cols[i%cols.length];
     s.style.left=(15+Math.random()*70)+'%';s.style.top=(15+Math.random()*50)+'%';area.appendChild(s);
     s.animate([{opacity:0,transform:'translateY(0) rotate(0) scale(.4)'},{opacity:1,transform:'translateY(-10px) rotate(180deg) scale(1)'},{opacity:0,transform:'translateY(-30px) rotate(360deg) scale(.3)'}],
       {duration:1100+Math.random()*800,delay:Math.random()*350,easing:'ease-out'}).onfinish=()=>s.remove();}}
-render();
+loadLevel(0);
 </script>
 </body>
 </html>
