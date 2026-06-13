@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NAZCA — Maqueta visual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sky:#3fc8ef; --sky-d:#1aa9d6;
+    --grape:#9b6cf2; --grape-d:#7a47e0;
+    --pink:#ff5cb0; --pink-d:#ff2e96;
+    --coral:#ff8a4c; --coral-d:#ff6a1f;
+    --sunny:#ffd23f; --sunny-d:#ffb800;
+    --lime:#8ee04a; --lime-d:#5fb71f;
+    --cream:#fff7ea; --cream-2:#ffe9c4;
+    --ink:#5a3570;        /* texto sobre claro */
+    --ink-soft:#9a7aa8;
+    --line-faint: rgba(120,70,40,.22);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+  html,body{min-height:100%;}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;color:#fff;
+    min-height:100vh;padding:46px 20px 80px;overflow-x:hidden;
+    background:
+      radial-gradient(60% 50% at 15% 10%, rgba(255,255,255,.35), transparent 60%),
+      radial-gradient(50% 40% at 90% 20%, rgba(255,210,63,.5), transparent 60%),
+      linear-gradient(155deg, var(--sky) 0%, var(--grape) 52%, var(--pink) 100%);
+  }
+  /* floating candy bokeh */
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:
+      radial-gradient(circle at 12% 78%, rgba(255,255,255,.25) 0 8px, transparent 9px),
+      radial-gradient(circle at 82% 70%, rgba(255,255,255,.18) 0 14px, transparent 15px),
+      radial-gradient(circle at 68% 12%, rgba(255,255,255,.2) 0 6px, transparent 7px),
+      radial-gradient(circle at 30% 30%, rgba(255,255,255,.14) 0 11px, transparent 12px);}
+  .page-head,.hint-trace,.stage,.gallery{position:relative;z-index:1;}
+
+  .page-head{max-width:860px;margin:0 auto 12px;text-align:center;}
+  .eyebrow{font-size:12px;letter-spacing:.34em;text-transform:uppercase;font-weight:800;
+    color:#fff;text-shadow:0 2px 6px rgba(120,40,120,.4);}
+  h1.wordmark{
+    font-family:'Baloo 2',cursive;font-weight:800;font-size:clamp(54px,10vw,96px);
+    letter-spacing:.06em;line-height:1;margin:.06em 0 .12em;
+    color:var(--sunny);
+    -webkit-text-stroke:5px #fff;paint-order:stroke fill;
+    text-shadow:0 8px 0 rgba(125,40,140,.35), 0 14px 26px rgba(80,20,90,.35);
+  }
+  .page-head .sub{color:#fff;font-size:15px;font-weight:700;max-width:520px;margin:0 auto;
+    text-shadow:0 2px 8px rgba(110,30,110,.45);}
+  .hint-trace{margin:26px auto 16px;text-align:center;color:#fff;font-size:13px;font-weight:800;
+    letter-spacing:.06em;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.5);
+    padding:9px 18px;border-radius:999px;display:inline-block;box-shadow:0 6px 16px rgba(90,20,100,.25);}
+  .hint-wrap{text-align:center;}
+
+  /* ---- Phone frame ---- */
+  .stage{display:flex;justify-content:center;margin-bottom:50px;}
+  .gallery{display:flex;flex-wrap:wrap;gap:36px 30px;justify-content:center;align-items:flex-start;max-width:1180px;margin:0 auto;}
+  .phone{position:relative;border-radius:44px;padding:11px;
+    background:linear-gradient(160deg,#ffffff,#ffe6f4);
+    box-shadow:0 26px 60px -18px rgba(60,10,80,.6), inset 0 0 0 2px rgba(255,255,255,.7), 0 0 0 3px rgba(255,92,176,.25);}
+  .phone.lg{width:332px;} .phone.sm{width:258px;}
+  .phone .screen{position:relative;overflow:hidden;border-radius:34px;aspect-ratio:9/19.3;display:flex;flex-direction:column;
+    background:linear-gradient(180deg, var(--cream) 0%, var(--cream-2) 100%);}
+  .phone .screen.festive{background:radial-gradient(70% 50% at 50% 12%, #ffe06b, transparent 55%),linear-gradient(170deg,#46cdf2,#9b6cf2 60%,#ff5cb0);}
+  .phone .notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:40%;height:18px;background:#fff;border-radius:0 0 14px 14px;z-index:30;opacity:.65;}
+  .caption{margin-top:14px;text-align:center;}
+  .caption .t{font-family:'Baloo 2';font-weight:700;font-size:16px;color:#fff;text-shadow:0 2px 6px rgba(110,30,110,.4);}
+  .caption .d{font-size:12.5px;color:rgba(255,255,255,.92);font-weight:700;margin-top:1px;}
+  .badge{display:inline-block;margin-top:7px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:800;
+    color:#7a47e0;background:#fff;border-radius:999px;padding:4px 13px;box-shadow:0 4px 0 rgba(255,92,176,.4);}
+
+  .grain::after{content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:.05;
+    background-image:radial-gradient(rgba(120,60,20,1) .5px,transparent .6px);background-size:3px 3px;}
+
+  /* ---- in-screen ---- */
+  .scr-pad{padding:44px 18px 20px;flex:1;display:flex;flex-direction:column;}
+  .hud{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+  .chip{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:800;color:var(--ink);
+    background:#fff;padding:7px 14px;border-radius:999px;box-shadow:0 4px 0 rgba(255,180,40,.5), 0 6px 12px rgba(120,60,20,.12);}
+  .chip .coin{color:var(--sunny-d);font-size:16px;}
+  .lvl small{display:block;font-size:10px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;font-weight:800;}
+  .lvl b{font-family:'Baloo 2';font-weight:700;font-size:17px;color:var(--ink);}
+
+  svg.glyph{width:100%;display:block;overflow:visible;}
+  .glyph .edge{stroke:var(--line-faint);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;fill:none;
+    transition:stroke .15s,stroke-width .15s;stroke-dasharray:.1 5;}
+  .glyph .edge.lit{stroke:url(#candy);stroke-width:5;filter:url(#glow);stroke-dasharray:none;}
+  .glyph .node{fill:#fff;stroke:#c79a6a;stroke-width:.8;}
+  .glyph .node.done{fill:url(#candy);stroke:#fff;stroke-width:1;filter:url(#glow);}
+  .glyph.solved .edge{stroke:url(#candy);stroke-width:5.2;filter:url(#glow);stroke-dasharray:none;}
+  .glyph.solved .node{fill:url(#candy);stroke:#fff;stroke-width:1;}
+  .festive .glyph .edge{stroke:rgba(255,255,255,.55);}
+  .festive .glyph.solved .edge{stroke:#fff;filter:url(#glow);}
+
+  .bg-glyph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:.7;}
+  .bg-glyph svg{width:88%;}
+
+  .play-area{flex:1;display:flex;align-items:center;justify-content:center;position:relative;touch-action:none;}
+  .traceFoot{margin-top:auto;}
+  .ctrls{display:flex;gap:9px;justify-content:center;margin-top:10px;}
+  .ctrl{flex:1;border:none;border-radius:18px;padding:11px 6px;font-family:'Nunito';font-weight:800;font-size:12px;color:#fff;
+    display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;transition:transform .07s;}
+  .ctrl .ic{font-size:17px;}
+  .ctrl.pink{background:linear-gradient(180deg,#ff86c6,var(--pink));box-shadow:0 5px 0 var(--pink-d),0 9px 14px rgba(120,30,90,.25);}
+  .ctrl.sky{background:linear-gradient(180deg,#74dcf6,var(--sky));box-shadow:0 5px 0 var(--sky-d),0 9px 14px rgba(20,90,120,.22);}
+  .ctrl.coral{background:linear-gradient(180deg,#ffab73,var(--coral));box-shadow:0 5px 0 var(--coral-d),0 9px 14px rgba(150,60,10,.22);}
+  .ctrl:active{transform:translateY(4px);}
+  .progress-line{margin-top:14px;text-align:center;font-size:13px;color:var(--ink-soft);font-weight:800;}
+  .progress-line b{color:var(--pink-d);font-family:'Baloo 2';font-size:16px;}
+
+  .win{position:absolute;inset:0;z-index:25;display:flex;flex-direction:column;justify-content:flex-end;
+    background:linear-gradient(180deg,rgba(255,247,234,0) 28%, rgba(255,233,200,.4) 52%, rgba(255,240,220,.96));
+    opacity:0;pointer-events:none;transition:opacity .45s;}
+  .win.show{opacity:1;pointer-events:auto;}
+  .win-card{padding:16px 18px 20px;text-align:center;}
+  .win-card .quechua{font-family:'Baloo 2';font-weight:800;font-size:34px;color:var(--pink);
+    -webkit-text-stroke:4px #fff;paint-order:stroke fill;text-shadow:0 6px 0 rgba(255,150,40,.5);}
+  .win-card .es{color:var(--ink-soft);font-size:13px;font-weight:800;margin-top:1px;}
+  .culture{margin:13px 0;padding:12px 14px;border-radius:18px;text-align:left;background:#fff;
+    box-shadow:0 6px 0 rgba(63,200,239,.3), 0 8px 16px rgba(80,40,120,.1);}
+  .culture .lab{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--sky-d);font-weight:900;}
+  .culture p{font-size:12.5px;line-height:1.5;color:var(--ink);font-weight:600;margin-top:4px;}
+  .reward{display:flex;align-items:center;justify-content:center;gap:7px;color:var(--sunny-d);font-weight:900;font-size:16px;margin-bottom:13px;}
+  .btn-primary{width:100%;border:none;cursor:pointer;border-radius:22px;padding:15px;
+    font-family:'Baloo 2';font-weight:700;font-size:19px;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.16);
+    background:linear-gradient(180deg,#a6ef6e,var(--lime-d));
+    box-shadow:0 7px 0 #3f8a1c, 0 14px 22px -6px rgba(40,120,10,.45), inset 0 2px 0 rgba(255,255,255,.5);transition:transform .07s;}
+  .btn-primary:active{transform:translateY(4px);box-shadow:0 3px 0 #3f8a1c, inset 0 2px 0 rgba(255,255,255,.5);}
+  .btn-ghost{width:100%;margin-top:9px;border:none;background:#fff;color:var(--grape-d);
+    border-radius:18px;padding:11px;font-weight:800;font-size:13px;cursor:pointer;box-shadow:0 4px 0 rgba(155,108,242,.4);}
+
+  .spark{position:absolute;width:9px;height:9px;border-radius:3px;pointer-events:none;opacity:0;}
+
+  /* splash */
+  .splash{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px 22px;position:relative;z-index:2;}
+  .splash .mark{font-family:'Baloo 2';font-weight:800;font-size:56px;letter-spacing:.05em;color:var(--sunny);
+    -webkit-text-stroke:5px #fff;paint-order:stroke fill;text-shadow:0 7px 0 rgba(125,40,140,.4),0 12px 20px rgba(60,10,70,.4);}
+  .splash .tag{margin-top:8px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:900;color:#fff;
+    background:rgba(255,255,255,.22);padding:5px 14px;border-radius:999px;}
+  .splash .tap{position:absolute;bottom:52px;font-family:'Baloo 2';font-weight:700;font-size:15px;color:#fff;
+    background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.6);padding:9px 22px;border-radius:999px;
+    animation:breathe 1.8s ease-in-out infinite;}
+  @keyframes breathe{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.06);opacity:1}}
+
+  /* worlds */
+  .worlds{padding:44px 16px 20px;flex:1;display:flex;flex-direction:column;}
+  .worlds h2{font-family:'Baloo 2';font-weight:800;font-size:23px;text-align:center;color:var(--grape-d);}
+  .worlds .wsub{text-align:center;font-size:11px;color:var(--ink-soft);font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;}
+  .wlist{position:relative;display:flex;flex-direction:column;gap:12px;}
+  .wcard{position:relative;display:flex;align-items:center;gap:12px;padding:12px;border-radius:20px;background:#fff;
+    box-shadow:0 6px 0 var(--cc,rgba(255,180,40,.45)), 0 8px 16px rgba(120,60,20,.12);}
+  .wcard .dot{width:40px;height:40px;border-radius:14px;flex:none;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;
+    background:linear-gradient(160deg,var(--c1),var(--c2));box-shadow:inset 0 2px 0 rgba(255,255,255,.5);}
+  .wcard .info{flex:1;min-width:0;}
+  .wcard .info .nm{font-family:'Baloo 2';font-weight:700;font-size:15px;color:var(--ink);}
+  .wcard .info .pr{font-size:11px;color:var(--ink-soft);font-weight:700;margin-top:1px;}
+  .wcard .bar{height:7px;border-radius:99px;background:#efe2cf;margin-top:6px;overflow:hidden;}
+  .wcard .bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--c1),var(--c2));}
+  .wcard.locked{opacity:.6;}
+  .wcard .lk{font-size:16px;}
+
+  /* level select */
+  .lvlsel{padding:44px 16px 18px;flex:1;display:flex;flex-direction:column;}
+  .lvlsel .top{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+  .lvlsel .top .back{color:var(--grape-d);font-size:22px;font-weight:900;}
+  .lvlsel .top h2{font-family:'Baloo 2';font-weight:800;font-size:18px;color:var(--ink);}
+  .lvlsel .top small{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:800;}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;}
+  .cell{aspect-ratio:1;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+    background:#fff;font-family:'Baloo 2';font-weight:700;font-size:16px;color:var(--ink-soft);box-shadow:0 4px 0 rgba(200,160,90,.4);}
+  .cell.done{background:linear-gradient(180deg,#ffe06b,var(--sunny-d));color:#fff;box-shadow:0 4px 0 #d99500;text-shadow:0 1px 0 rgba(0,0,0,.12);}
+  .cell.cur{background:linear-gradient(180deg,#ff86c6,var(--pink));color:#fff;box-shadow:0 4px 0 var(--pink-d);animation:bob 1.2s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+  .cell.locked{color:#c9b59a;box-shadow:0 4px 0 rgba(200,160,90,.25);}
+  .cell .stars{font-size:8px;letter-spacing:1px;}
+  .lvlsel .foot{margin-top:auto;text-align:center;font-size:11px;color:var(--ink-soft);font-weight:800;padding-top:12px;}
+
+  @media(max-width:560px){.phone.lg,.phone.sm{width:300px;}}
+</style>
+</head>
+<body>
+
+  <div class="page-head">
+    <div class="eyebrow">Maqueta visual · concepto one-line</div>
+    <h1 class="wordmark">NAZCA</h1>
+    <p class="sub">Estilo dulce y vibrante, con los colores de los tejidos andinos. Cada nivel es un geoglifo que se traza de un solo trazo; la línea se enciende como una jalea de caramelo.</p>
+  </div>
+
+  <div class="hint-wrap"><div class="hint-trace">✦ Pruébalo — traza el colibrí con el dedo o el mouse ✦</div></div>
+
+  <!-- shared SVG defs (gradiente + glow) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="candy" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#ff4fa3"/>
+        <stop offset=".5" stop-color="#ff8a3c"/>
+        <stop offset="1" stop-color="#ffd23f"/>
+      </linearGradient>
+      <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+        <feGaussianBlur stdDeviation="1.6" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ============ INTERACTIVE GAMEPLAY ============ -->
+  <div class="stage">
+    <div>
+      <div class="phone lg">
+        <div class="notch"></div>
+        <div class="screen grain">
+          <div class="scr-pad">
+            <div class="hud">
+              <div class="lvl"><small>Líneas de Nazca</small><b>7 · El Colibrí</b></div>
+              <div class="chip"><span class="coin">◆</span> <span id="coins">240</span></div>
+            </div>
+            <div class="play-area">
+              <svg id="playGlyph" class="glyph" viewBox="0 0 100 100" aria-label="Geoglifo del colibrí">
+                <g id="edgeLayer"></g>
+                <g id="nodeLayer"></g>
+                <circle id="head" r="2.8" fill="#fff" filter="url(#glow)" style="display:none"/>
+              </svg>
+              <div class="win" id="winOverlay">
+                <div class="win-card">
+                  <div class="quechua">¡Sumaq!</div>
+                  <div class="es">Trazo perfecto</div>
+                  <div class="culture">
+                    <div class="lab">Atlas · Geoglifo</div>
+                    <p>El colibrí de Nazca mide unos 93 m. Para los pueblos de la costa simbolizaba la fertilidad y el agua que bajaba del altiplano.</p>
+                  </div>
+                  <div class="reward"><span>◆</span> +30 · racha de 4 días 🔥</div>
+                  <button class="btn-primary" id="nextBtn">Siguiente trazo</button>
+                  <button class="btn-ghost">Compartir mi colibrí ✦</button>
+                </div>
+              </div>
+            </div>
+            <div class="traceFoot">
+              <div class="progress-line"><b id="prog">0</b> / 12 trazos encendidos</div>
+              <div class="ctrls">
+                <button class="ctrl pink" id="hintBtn"><span class="ic">✦</span>Pista</button>
+                <button class="ctrl sky" id="undoBtn"><span class="ic">↩</span>Deshacer</button>
+                <button class="ctrl coral" id="resetBtn"><span class="ic">⟳</span>Reiniciar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="caption"><div class="t">Pantalla de juego</div><div class="d">Un dedo, sin tiempo, sin perder.</div><span class="badge">Interactiva</span></div>
+    </div>
+  </div>
+
+  <!-- ============ STATIC SCREENS ============ -->
+  <div class="gallery">
+
+    <div>
+      <div class="phone sm">
+        <div class="notch"></div>
+        <div class="screen festive grain">
+          <div class="bg-glyph"><svg class="glyph solved" viewBox="0 0 100 100" data-faint="1"></svg></div>
+          <div class="splash">
+            <div class="mark">NAZCA</div>
+            <div class="tag">Trazos del Perú</div>
+            <div class="tap">¡Jugar!</div>
+          </div>
+        </div>
+      </div>
+      <div class="caption"><div class="t">Inicio</div><div class="d">Colorido y festivo.</div></div>
+    </div>
+
+    <div>
+      <div class="phone sm">
+        <div class="notch"></div>
+        <div class="screen grain">
+          <div class="worlds">
+            <h2>Viaje por el Perú</h2>
+            <div class="wsub">Elige tu sendero</div>
+            <div class="wlist">
+              <div class="wcard" style="--cc:rgba(255,180,40,.5)">
+                <div class="dot" style="--c1:#ffd23f;--c2:#ff8a3c">🐦</div>
+                <div class="info"><div class="nm">Líneas de Nazca</div><div class="pr">Desierto · 7 / 40</div>
+                  <div class="bar"><i style="width:18%;--c1:#ffd23f;--c2:#ff8a3c"></i></div></div>
+              </div>
+              <div class="wcard" style="--cc:rgba(63,200,239,.5)">
+                <div class="dot" style="--c1:#74dcf6;--c2:#2f8d86">◆</div>
+                <div class="info"><div class="nm">Kené Amazónico</div><div class="pr">Shipibo · 0 / 45</div>
+                  <div class="bar"><i style="width:0%;--c1:#74dcf6;--c2:#2f8d86"></i></div></div>
+              </div>
+              <div class="wcard locked" style="--cc:rgba(255,92,176,.4)">
+                <div class="dot" style="--c1:#ff86c6;--c2:#ff2e96">▦</div>
+                <div class="info"><div class="nm">Tejidos Wari</div><div class="pr">Se abre al terminar Nazca</div></div>
+                <div class="lk">🔒</div>
+              </div>
+              <div class="wcard locked" style="--cc:rgba(155,108,242,.4)">
+                <div class="dot" style="--c1:#b58cff;--c2:#7a47e0">☉</div>
+                <div class="info"><div class="nm">Imperio del Sol</div><div class="pr">Inca · bloqueado</div></div>
+                <div class="lk">🔒</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="caption"><div class="t">Mapa de mundos</div><div class="d">Cada cultura, su color.</div></div>
+    </div>
+
+    <div>
+      <div class="phone sm">
+        <div class="notch"></div>
+        <div class="screen grain">
+          <div class="lvlsel">
+            <div class="top"><span class="back">‹</span><div><small>Mundo 1</small><h2>Líneas de Nazca</h2></div></div>
+            <div class="grid" id="lvlgrid"></div>
+            <div class="foot">240 niveles y subiendo · cada actualización trae más</div>
+          </div>
+        </div>
+      </div>
+      <div class="caption"><div class="t">Selección de niveles</div><div class="d">Cientos de trazos por coleccionar.</div></div>
+    </div>
+
+    <div>
+      <div class="phone sm">
+        <div class="notch"></div>
+        <div class="screen grain">
+          <div class="scr-pad">
+            <div class="hud">
+              <div class="lvl"><small>Líneas de Nazca</small><b>11 · La Araña</b></div>
+              <div class="chip"><span class="coin">◆</span> 310</div>
+            </div>
+            <div class="play-area"><svg class="glyph solved" viewBox="0 0 100 100" data-spider="1"></svg></div>
+            <div class="traceFoot">
+              <div class="win-card" style="padding:6px 0 0;">
+                <div class="quechua" style="font-size:26px;">¡Allin!</div>
+                <div class="es">Trazo perfecto</div>
+                <div class="reward" style="margin:10px 0;"><span>◆</span> +30</div>
+                <button class="btn-primary">Siguiente trazo</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="caption"><div class="t">Nivel completado</div><div class="d">La figura brilla + confeti.</div></div>
+    </div>
+
+  </div>
+
+<script>
+const N={A:[10,55],B:[34,52],C:[30,70],D:[54,66],E:[78,74],F:[70,58],G:[90,50],H:[60,48],I:[44,30],J:[40,50],K:[30,38]};
+const SOL=['A','B','K','I','H','G','F','E','D','C','B','J','H'];
+const EDGES=[];for(let i=0;i<SOL.length-1;i++)EDGES.push([SOL[i],SOL[i+1]]);
+const key=(a,b)=>[a,b].sort().join('|');
+const edgeIndex={};EDGES.forEach((e,i)=>edgeIndex[key(e[0],e[1])]=i);
+const SVGNS='http://www.w3.org/2000/svg';
+
+function paintInto(svg){
+  const ge=document.createElementNS(SVGNS,'g');
+  EDGES.forEach(e=>{const l=document.createElementNS(SVGNS,'line');
+    l.setAttribute('x1',N[e[0]][0]);l.setAttribute('y1',N[e[0]][1]);l.setAttribute('x2',N[e[1]][0]);l.setAttribute('y2',N[e[1]][1]);
+    l.setAttribute('class','edge');ge.appendChild(l);});
+  svg.appendChild(ge);
+  const gn=document.createElementNS(SVGNS,'g');
+  Object.keys(N).forEach(k=>{const c=document.createElementNS(SVGNS,'circle');
+    c.setAttribute('cx',N[k][0]);c.setAttribute('cy',N[k][1]);c.setAttribute('r',2);c.setAttribute('class','node');gn.appendChild(c);});
+  svg.appendChild(gn);
+}
+document.querySelectorAll('[data-faint],[data-spider]').forEach(paintInto);
+
+const grid=document.getElementById('lvlgrid');
+const states=['done','done','done','done','done','done','done','cur','lock','lock','lock','lock'];
+for(let i=0;i<12;i++){const c=document.createElement('div');const s=states[i];
+  c.className='cell'+(s==='done'?' done':'')+(s==='cur'?' cur':'')+(s==='lock'?' locked':'');
+  if(s==='lock')c.innerHTML='🔒';
+  else c.innerHTML='<span>'+(i+1)+'</span>'+(s==='done'?'<span class="stars">★★★</span>':'<span class="stars">▶</span>');
+  grid.appendChild(c);}
+
+const svg=document.getElementById('playGlyph');
+const edgeLayer=document.getElementById('edgeLayer'),nodeLayer=document.getElementById('nodeLayer'),headDot=document.getElementById('head');
+const edgeEls=[],nodeEls={};
+EDGES.forEach(e=>{const l=document.createElementNS(SVGNS,'line');
+  l.setAttribute('x1',N[e[0]][0]);l.setAttribute('y1',N[e[0]][1]);l.setAttribute('x2',N[e[1]][0]);l.setAttribute('y2',N[e[1]][1]);
+  l.setAttribute('class','edge');edgeLayer.appendChild(l);edgeEls.push(l);});
+Object.keys(N).forEach(k=>{const c=document.createElementNS(SVGNS,'circle');
+  c.setAttribute('cx',N[k][0]);c.setAttribute('cy',N[k][1]);c.setAttribute('r',2.4);c.setAttribute('class','node');nodeLayer.appendChild(c);nodeEls[k]=c;});
+const ring=document.createElementNS(SVGNS,'circle');
+ring.setAttribute('cx',N.A[0]);ring.setAttribute('cy',N.A[1]);ring.setAttribute('r',4.2);
+ring.setAttribute('fill','none');ring.setAttribute('stroke','#ff2e96');ring.setAttribute('stroke-width','1.2');
+nodeLayer.appendChild(ring);ring.style.transformOrigin=N.A[0]+'px '+N.A[1]+'px';
+if(ring.animate)ring.animate([{opacity:.3,transform:'scale(.85)'},{opacity:1,transform:'scale(1.3)'},{opacity:.3,transform:'scale(.85)'}],{duration:1500,iterations:Infinity});
+
+let path=[],used=new Set(),current=null,active=false;
+const toSvg=evt=>{const p=svg.createSVGPoint();p.x=evt.clientX;p.y=evt.clientY;return p.matrixTransform(svg.getScreenCTM().inverse());};
+function nearest(p,r){let best=null,bd=r*r;for(const k in N){const dx=N[k][0]-p.x,dy=N[k][1]-p.y,d=dx*dx+dy*dy;if(d<bd){bd=d;best=k;}}return best;}
+function render(){
+  edgeEls.forEach((l,i)=>l.classList.toggle('lit',used.has(i)));
+  Object.keys(N).forEach(k=>nodeEls[k].classList.toggle('done',path.includes(k)));
+  document.getElementById('prog').textContent=used.size;
+  if(current){headDot.style.display='block';headDot.setAttribute('cx',N[current][0]);headDot.setAttribute('cy',N[current][1]);}else headDot.style.display='none';
+}
+function commit(to){used.add(edgeIndex[key(current,to)]);path.push(to);current=to;ring.style.display='none';render();if(used.size===EDGES.length)win();}
+function tryStart(p){const n=nearest(p,7);if(!n)return false;
+  if(path.length===0){path=[n];current=n;active=true;ring.style.display='none';render();return true;}
+  if(n===current){active=true;return true;}return false;}
+svg.addEventListener('pointerdown',e=>{if(winOverlay.classList.contains('show'))return;if(tryStart(toSvg(e)))svg.setPointerCapture(e.pointerId);});
+svg.addEventListener('pointermove',e=>{if(!active||!current)return;const n=nearest(toSvg(e),6.5);
+  if(n&&n!==current){const i=edgeIndex[key(current,n)];if(i!==undefined&&!used.has(i))commit(n);}});
+svg.addEventListener('pointerup',()=>active=false);svg.addEventListener('pointercancel',()=>active=false);
+
+document.getElementById('undoBtn').onclick=()=>{if(path.length<=1){resetTrace();return;}
+  const last=path.pop();used.delete(edgeIndex[key(path[path.length-1],last)]);current=path[path.length-1];render();};
+document.getElementById('resetBtn').onclick=resetTrace;
+function resetTrace(){path=[];used=new Set();current=null;active=false;ring.style.display='block';render();}
+document.getElementById('hintBtn').onclick=()=>{let t=-1;for(let i=0;i<SOL.length-1;i++){const idx=edgeIndex[key(SOL[i],SOL[i+1])];if(!used.has(idx)){t=idx;break;}}
+  if(t>=0)edgeEls[t].animate([{stroke:'#ff2e96',strokeWidth:6},{stroke:'#ff2e96',strokeWidth:6},{stroke:'rgba(120,70,40,.22)',strokeWidth:2.4}],{duration:900});};
+
+const winOverlay=document.getElementById('winOverlay');
+function win(){svg.classList.add('solved');setTimeout(()=>{winOverlay.classList.add('show');confetti();},420);}
+document.getElementById('nextBtn').onclick=()=>{winOverlay.classList.remove('show');svg.classList.remove('solved');
+  const c=document.getElementById('coins');c.textContent=parseInt(c.textContent)+30;resetTrace();};
+function confetti(){const area=svg.parentElement;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const cols=['#ff4fa3','#ff8a3c','#ffd23f','#3fc8ef','#8ee04a','#9b6cf2'];
+  for(let i=0;i<30;i++){const s=document.createElement('div');s.className='spark';
+    s.style.background=cols[i%cols.length];s.style.boxShadow='0 0 6px '+cols[i%cols.length];
+    s.style.left=(15+Math.random()*70)+'%';s.style.top=(15+Math.random()*50)+'%';area.appendChild(s);
+    s.animate([{opacity:0,transform:'translateY(0) rotate(0) scale(.4)'},{opacity:1,transform:'translateY(-10px) rotate(180deg) scale(1)'},{opacity:0,transform:'translateY(-30px) rotate(360deg) scale(.3)'}],
+      {duration:1100+Math.random()*800,delay:Math.random()*350,easing:'ease-out'}).onfinish=()=>s.remove();}}
+render();
+</script>
+</body>
+</html>
